@@ -1,0 +1,5 @@
+frontend/.next
+frontend/node_modules
+.DS_Store
+job-tracker-planning.md
+CLAUDE.md
