@@ -31,7 +31,7 @@ export default function ApplicationTable({
 
   return (
     <>
-      <div className="rounded-lg border border-gray-500/40 overflow-hidden tracking-tight">
+      <div className="rounded-lg border border-gray-500/40 overflow-hidden tracking-tight relative z-30">
         <table className="text-md table-auto bg-stone-700/40 w-full">
           <thead>
             <tr>
@@ -81,10 +81,10 @@ export default function ApplicationTable({
       {selectedApplication && (
         <>
           <div
-            className="fixed inset-0 bg-black/20 z-40"
+            className="fixed inset-0 bg-black/20 z-20"
             onClick={() => setSelectedApplication(null)}
           />
-          <div className="flex items-center fixed top-0 right-0 h-full w-[500px] bg-stone-800 shadow-lg z-50 overflow-y-auto p-4">
+          <div className="flex items-center fixed top-0 right-0 h-full w-[500px] bg-stone-800 shadow-lg z-40 overflow-y-auto p-4">
             <DetailPanel application={selectedApplication} />
           </div>
         </>
