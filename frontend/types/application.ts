@@ -20,4 +20,5 @@ export interface Application {
   salaryRange: string;
   createdAt: string;
   updated_at: string;
+  notes: string;
 }
