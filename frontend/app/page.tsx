@@ -72,11 +72,47 @@ export default function Home() {
       createdAt: "2026-02-25",
       updated_at: "2026-03-28",
     },
+    {
+      id: 6,
+      company: "Cloudflare",
+      role: "Systems Engineer",
+      status: ApplicationStatus.FollowedUp,
+      appliedDate: "2026-03-12",
+      jobUrl: "https://cloudflare.com/careers/6",
+      location: "Austin, TX",
+      salaryRange: "$145-175k",
+      createdAt: "2026-03-12",
+      updated_at: "2026-03-25",
+    },
+    {
+      id: 7,
+      company: "Netflix",
+      role: "Senior Software Engineer",
+      status: ApplicationStatus.RejectedAfterInterview,
+      appliedDate: "2026-02-20",
+      jobUrl: "https://jobs.netflix.com/7",
+      location: "Los Gatos, CA",
+      salaryRange: "$200-250k",
+      createdAt: "2026-02-20",
+      updated_at: "2026-03-30",
+    },
+    {
+      id: 8,
+      company: "Twilio",
+      role: "Backend Developer",
+      status: ApplicationStatus.Expired,
+      appliedDate: "2026-02-10",
+      jobUrl: "https://twilio.com/careers/8",
+      location: "Remote",
+      salaryRange: "$130-155k",
+      createdAt: "2026-02-10",
+      updated_at: "2026-03-15",
+    },
   ];
 
   return (
     <main className="min-h-screen bg-stone-900/95 flex items-center justify-center">
-      <div className="text-center space-y-2 text-stone-100">
+      <div className="text-center space-y-2 text-stone-100 max-w-6xl w-full mx-auto">
         <h1 className="text-4xl font-bold text-left pb-2">Job Tracker</h1>
         <div className="text-left justify-between p-3 flex flex-row">
           <Stat num={8} title="Total" />

@@ -1,15 +1,9 @@
 import { Application } from "@/types/application";
-
-function capitalize(words: string[]): string[] {
-  for (let i = 0; i < words.length; i++) {
-    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
-  }
-  return words;
-}
+import StatusBadge from "@/components/statusBadge";
 
 function ApplicationTableHeader({ header }: { header: string }) {
   return (
-    <th className="border-b border-gray-500/40 text-stone-100 font-semibold text-left">
+    <th className="border-b border-gray-500/40 text-stone-400 font-semibold text-left">
       {header}
     </th>
   );
@@ -29,7 +23,7 @@ export default function ApplicationTable({
   applications: Application[];
 }) {
   return (
-    <div className="rounded-lg border border-gray-500/40 overflow-hidden min-w-200 tracking-tight">
+    <div className="rounded-lg border border-gray-500/40 overflow-hidden tracking-tight">
       <table className="text-md table-auto bg-stone-700/40 w-full">
         <thead>
           <tr>
@@ -53,7 +47,8 @@ export default function ApplicationTable({
                 </div>
               </ApplicationTableData>
               <ApplicationTableData>
-                <p>{capitalize(application.status.split("_")).join(" ")}</p>
+                {/*<p>{capitalize(application.status.split("_")).join(" ")}</p>*/}
+                <StatusBadge status={application.status} />
               </ApplicationTableData>
               <ApplicationTableData>
                 <p>{application.salaryRange}</p>
