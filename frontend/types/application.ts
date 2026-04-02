@@ -4,7 +4,7 @@ export enum ApplicationStatus {
   Offer = "offer",
   Rejected = "rejected",
   FollowedUp = "followed_up",
-  TakeHomeAssignment = "take_home_assignment",
+  TakeHome = "take_home",
   RejectedAfterInterview = "rejected_after_interview",
   Expired = "expired",
 }
@@ -14,6 +14,7 @@ export interface Application {
   company: string;
   role: string;
   status: ApplicationStatus;
+  location: string;
   appliedDate: string;
   jobUrl: string;
   salaryRange: string;
