@@ -42,7 +42,10 @@ export default function ApplicationTable({
         </thead>
         <tbody>
           {applications.map((application) => (
-            <tr key={application.id}>
+            <tr
+              key={application.id}
+              className="hover:bg-stone-900/50 cursor-pointer"
+            >
               <ApplicationTableData>
                 <div className="flex flex-col">
                   <p>{application.company}</p>

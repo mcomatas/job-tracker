@@ -1,6 +1,15 @@
 import ApplicationTable from "@/components/applicationTable";
 import { Application, ApplicationStatus } from "@/types/application";
 
+function Stat({ num, title }: { num: number; title: string }) {
+  return (
+    <div>
+      <h2 className="text-3xl font-semibold">{num}</h2>
+      <p className="text-sm text-stone-400">{title}</p>
+    </div>
+  );
+}
+
 export default function Home() {
   const applications: Application[] = [
     {
@@ -67,10 +76,14 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-stone-900/95 flex items-center justify-center">
-      <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold text-left text-stone-100">
-          Job Tracker
-        </h1>
+      <div className="text-center space-y-2 text-stone-100">
+        <h1 className="text-4xl font-bold text-left pb-2">Job Tracker</h1>
+        <div className="text-left justify-between p-3 flex flex-row">
+          <Stat num={8} title="Total" />
+          <Stat num={3} title="Applied" />
+          <Stat num={2} title="In progress" />
+          <Stat num={3} title="Rejected" />
+        </div>
         <ApplicationTable applications={applications} />
       </div>
     </main>
