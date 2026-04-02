@@ -7,6 +7,7 @@ export enum ApplicationStatus {
   TakeHome = "take_home",
   RejectedAfterInterview = "rejected_after_interview",
   Expired = "expired",
+  Saved = "saved",
 }
 
 export interface Application {
@@ -20,5 +21,20 @@ export interface Application {
   salaryRange: string;
   createdAt: string;
   updated_at: string;
-  notes: string;
+  notes: Notes;
+}
+
+export interface StatusEvent {
+  id: number;
+  applicationId: number;
+  fromStatus: ApplicationStatus;
+  toStatus: ApplicationStatus;
+  createdAt: string;
+}
+
+export interface Notes {
+  id: number;
+  applicationId: number;
+  body: string;
+  createAt: string;
 }

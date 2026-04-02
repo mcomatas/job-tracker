@@ -64,9 +64,6 @@ export default function ApplicationTable({
                 </ApplicationTableData>
               </tr>
             ))}
-            <tr>
-              <td className="font-semibold">Twilio</td>
-            </tr>
           </tbody>
         </table>
       </div>

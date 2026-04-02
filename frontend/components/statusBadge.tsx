@@ -17,6 +17,7 @@ export default function StatusBadge({ status }: { status: ApplicationStatus }) {
     [ApplicationStatus.TakeHome]: "bg-purple-500/20 text-purple-300",
     [ApplicationStatus.RejectedAfterInterview]: "bg-rose-500/20 text-rose-300",
     [ApplicationStatus.Expired]: "bg-stone-500/20 text-stone-300",
+    [ApplicationStatus.Saved]: "bg-gray-500/20 text-gray-300",
   };
 
   return (

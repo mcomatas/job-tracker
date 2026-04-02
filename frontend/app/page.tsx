@@ -1,5 +1,5 @@
 import ApplicationTable from "@/components/applicationTable";
-import { Application, ApplicationStatus } from "@/types/application";
+import { Application, ApplicationStatus, Notes } from "@/types/application";
 
 function Stat({ num, title }: { num: number; title: string }) {
   return (
@@ -23,6 +23,12 @@ export default function Home() {
       salaryRange: "$150-180k",
       createdAt: "2026-03-15",
       updated_at: "2026-03-15",
+      notes: {
+        id: 1,
+        applicationId: 1,
+        body: "Head of talent reached out directly. Node.js + TypeScript + PostgreSQL stack. Onsite in NY — confirm location before next call.",
+        createAt: "2026-03-15",
+      },
     },
     {
       id: 2,
@@ -107,6 +113,19 @@ export default function Home() {
       salaryRange: "$130-155k",
       createdAt: "2026-02-10",
       updated_at: "2026-03-15",
+    },
+    {
+      id: 9,
+      company: "Linear",
+      role: "Software Engineer",
+      status: ApplicationStatus.Saved,
+      appliedDate: "",
+      jobUrl: "https://linear.app/careers/9",
+      location: "Remote",
+      salaryRange: "$140-170k",
+      createdAt: "2026-03-30",
+      updated_at: "2026-03-30",
+      notes: "",
     },
   ];
 
