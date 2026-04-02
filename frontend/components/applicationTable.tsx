@@ -1,6 +1,9 @@
+"use client";
+
 import { Application } from "@/types/application";
 import StatusBadge from "@/components/statusBadge";
 import DetailPanel from "@/components/detailPanel";
+import { useState } from "react";
 
 function ApplicationTableHeader({ header }: { header: string }) {
   return (
@@ -23,6 +26,9 @@ export default function ApplicationTable({
 }: {
   applications: Application[];
 }) {
+  const [selectedApplication, setSelectedApplication] =
+    useState<Application | null>(null);
+
   return (
     <>
       <div className="rounded-lg border border-gray-500/40 overflow-hidden tracking-tight">
@@ -41,6 +47,11 @@ export default function ApplicationTable({
               <tr
                 key={application.id}
                 className="hover:bg-stone-900/50 cursor-pointer"
+                onClick={() =>
+                  setSelectedApplication(
+                    selectedApplication !== application ? application : null,
+                  )
+                }
               >
                 <ApplicationTableData>
                   <div className="flex flex-col">
@@ -67,7 +78,17 @@ export default function ApplicationTable({
           </tbody>
         </table>
       </div>
-      <DetailPanel application={applications[0]} />
+      {selectedApplication && (
+        <>
+          <div
+            className="fixed inset-0 bg-black/20 z-40"
+            onClick={() => setSelectedApplication(null)}
+          />
+          <div className="flex items-center fixed top-0 right-0 h-full w-[500px] bg-stone-800 shadow-lg z-50 overflow-y-auto p-4">
+            <DetailPanel application={selectedApplication} />
+          </div>
+        </>
+      )}
     </>
   );
 }

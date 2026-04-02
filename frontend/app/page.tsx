@@ -41,6 +41,12 @@ export default function Home() {
       salaryRange: "$140-170k",
       createdAt: "2026-03-10",
       updated_at: "2026-03-22",
+      notes: {
+        id: 2,
+        applicationId: 2,
+        body: "Phone screen went well. Technical interview scheduled for next week — focus on system design.",
+        createAt: "2026-03-22",
+      },
     },
     {
       id: 3,
@@ -53,6 +59,12 @@ export default function Home() {
       salaryRange: "$130-160k",
       createdAt: "2026-03-08",
       updated_at: "2026-03-20",
+      notes: {
+        id: 3,
+        applicationId: 3,
+        body: "Take-home is a Next.js app with API routes. Due in 5 days. Keep it clean and well-tested.",
+        createAt: "2026-03-20",
+      },
     },
     {
       id: 4,
@@ -65,6 +77,12 @@ export default function Home() {
       salaryRange: "$120-150k",
       createdAt: "2026-03-01",
       updated_at: "2026-03-18",
+      notes: {
+        id: 4,
+        applicationId: 4,
+        body: "Rejected after resume screen. Recruiter mentioned they were looking for more Rails experience.",
+        createAt: "2026-03-18",
+      },
     },
     {
       id: 5,
@@ -77,6 +95,12 @@ export default function Home() {
       salaryRange: "$160-190k",
       createdAt: "2026-02-25",
       updated_at: "2026-03-28",
+      notes: {
+        id: 5,
+        applicationId: 5,
+        body: "Offer at $175k base + equity. Need to respond by April 5. Compare with other pipelines before deciding.",
+        createAt: "2026-03-28",
+      },
     },
     {
       id: 6,
@@ -89,6 +113,12 @@ export default function Home() {
       salaryRange: "$145-175k",
       createdAt: "2026-03-12",
       updated_at: "2026-03-25",
+      notes: {
+        id: 6,
+        applicationId: 6,
+        body: "No response after two weeks. Sent follow-up email to recruiter on LinkedIn.",
+        createAt: "2026-03-25",
+      },
     },
     {
       id: 7,
@@ -101,6 +131,12 @@ export default function Home() {
       salaryRange: "$200-250k",
       createdAt: "2026-02-20",
       updated_at: "2026-03-30",
+      notes: {
+        id: 7,
+        applicationId: 7,
+        body: "Made it to final round but didn't pass the system design interview. Feedback: needed stronger distributed systems knowledge.",
+        createAt: "2026-03-30",
+      },
     },
     {
       id: 8,
@@ -113,6 +149,12 @@ export default function Home() {
       salaryRange: "$130-155k",
       createdAt: "2026-02-10",
       updated_at: "2026-03-15",
+      notes: {
+        id: 8,
+        applicationId: 8,
+        body: "Posting was taken down before hearing back. Role may have been filled internally.",
+        createAt: "2026-03-15",
+      },
     },
     {
       id: 9,
@@ -125,12 +167,17 @@ export default function Home() {
       salaryRange: "$140-170k",
       createdAt: "2026-03-30",
       updated_at: "2026-03-30",
-      notes: "",
+      notes: {
+        id: 9,
+        applicationId: 9,
+        body: "Great product, small team. Wait until take-home for Vercel is done before applying.",
+        createAt: "2026-03-30",
+      },
     },
   ];
 
   return (
-    <main className="min-h-screen bg-stone-900/95 flex items-center justify-center">
+    <main className="min-h-screen bg-stone-900/95 flex items-start pt-30">
       <div className="text-center space-y-2 text-stone-100 max-w-6xl w-full mx-auto">
         <h1 className="text-4xl font-bold text-left pb-2">Job Tracker</h1>
         <div className="text-left justify-between p-3 flex flex-row">

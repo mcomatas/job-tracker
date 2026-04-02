@@ -16,7 +16,7 @@ function GridPane({
   return (
     <div className="flex flex-col bg-gray-900/30 rounded-md px-4 py-2 text-left font-semibold">
       <p className="text-sm text-stone-400">{header}</p>
-      <p>{children}</p>
+      <p className="overflow-hidden">{children}</p>
     </div>
   );
 }
@@ -130,7 +130,7 @@ export default function DetailPanel({
   application: Application;
 }) {
   return (
-    <div className="rounded-lg border border-gray-500/40 overflow-hidden tracking-tight bg-stone-700/40 max-w-2xl">
+    <div className="rounded-lg border border-gray-500/40 overflow-hidden tracking-tight bg-stone-700 max-w-2xl">
       <div className="flex flex-row items-center justify-between text-md w-full px-4 py-1.5">
         <div className="flex flex-col font-semibold text-left">
           <p className="text-xl">{application.company}</p>
@@ -153,14 +153,16 @@ export default function DetailPanel({
       </div>
 
       <div className="px-4 py-2 text-left">
-        <p className="text-stone-400 text-sm font-semibold">STATUS HISTORY</p>
+        <p className="text-stone-400 text-sm font-semibold py-2">
+          STATUS HISTORY
+        </p>
         {mockEvents.map((event) => (
           <StatusUpdate key={event.id} event={event} />
         ))}
       </div>
 
       <div className="px-4 py-2 text-left">
-        <p className="text-stone-400 text-sm font-semibold">NOTES</p>
+        <p className="text-stone-400 text-sm font-semibold pb-2">NOTES</p>
         <Note note={application.notes} />
       </div>
     </div>
