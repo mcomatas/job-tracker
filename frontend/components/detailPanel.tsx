@@ -2,7 +2,6 @@ import {
   Application,
   ApplicationStatus,
   StatusEvent,
-  Notes,
 } from "@/types/application";
 import StatusBadge from "@/components/statusBadge";
 
@@ -50,10 +49,10 @@ function StatusUpdate({ event }: { event: StatusEvent }) {
   );
 }
 
-function Note({ note }: { note: Notes }) {
+function Note({ note }: { note: string | null }) {
   return (
     <div className="flex flex-col bg-gray-900/30 rounded-md px-4 py-2 text-left text-sm text-stone-400">
-      {note.body}
+      {note}
     </div>
   );
 }
