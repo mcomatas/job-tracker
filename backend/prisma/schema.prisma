@@ -25,7 +25,7 @@ enum ApplicationStatus {
   saved
 }
 
-model Application {
+model Applications {
   id           String  @id @default(uuid())
   company      String
   role         String
@@ -37,16 +37,16 @@ model Application {
   notes        String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
-  statusEvents StatusEvent[]
+  statusEvents StatusEvents[]
 }
 
-model StatusEvent {
+model StatusEvents {
   id              String @id @default(uuid())
   applicationId   String
   fromStatus      ApplicationStatus?
   toStatus        ApplicationStatus
   createdAt       DateTime @default(now())
-  application     Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  application     Applications @relation(fields: [applicationId], references: [id], onDelete: Cascade)
 
   @@index([applicationId, createdAt])
 }
