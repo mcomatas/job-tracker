@@ -16,7 +16,7 @@ function Stat({ num, title }: { num: number; title: string }) {
 export default function Home() {
   const applications: Application[] = [
     {
-      id: 1,
+      id: "1",
       company: "Google",
       role: "Software Engineer",
       status: ApplicationStatus.Applied,
@@ -25,12 +25,12 @@ export default function Home() {
       location: "New York, NY",
       salaryRange: "$150-180k",
       createdAt: "2026-03-15",
-      updated_at: "2026-03-15",
+      updatedAt: "2026-03-15",
       notes:
         "Head of talent reached out directly. Node.js + TypeScript + PostgreSQL stack. Onsite in NY — confirm location before next call.",
     },
     {
-      id: 2,
+      id: "2",
       company: "Stripe",
       role: "Backend Engineer",
       status: ApplicationStatus.Interview,
@@ -39,12 +39,12 @@ export default function Home() {
       location: "San Francisco, CA",
       salaryRange: "$140-170k",
       createdAt: "2026-03-10",
-      updated_at: "2026-03-22",
+      updatedAt: "2026-03-22",
       notes:
         "Phone screen went well. Technical interview scheduled for next week — focus on system design.",
     },
     {
-      id: 3,
+      id: "3",
       company: "Vercel",
       role: "Full Stack Developer",
       status: ApplicationStatus.TakeHome,
@@ -53,12 +53,12 @@ export default function Home() {
       location: "Remote",
       salaryRange: "$130-160k",
       createdAt: "2026-03-08",
-      updated_at: "2026-03-20",
+      updatedAt: "2026-03-20",
       notes:
         "Take-home is a Next.js app with API routes. Due in 5 days. Keep it clean and well-tested.",
     },
     {
-      id: 4,
+      id: "4",
       company: "Shopify",
       role: "Software Engineer",
       status: ApplicationStatus.Rejected,
@@ -67,12 +67,12 @@ export default function Home() {
       location: "Toronto, ON",
       salaryRange: "$120-150k",
       createdAt: "2026-03-01",
-      updated_at: "2026-03-18",
+      updatedAt: "2026-03-18",
       notes:
         "Rejected after resume screen. Recruiter mentioned they were looking for more Rails experience.",
     },
     {
-      id: 5,
+      id: "5",
       company: "Datadog",
       role: "Platform Engineer",
       status: ApplicationStatus.Offer,
@@ -81,12 +81,12 @@ export default function Home() {
       location: "Boston, MA",
       salaryRange: "$160-190k",
       createdAt: "2026-02-25",
-      updated_at: "2026-03-28",
+      updatedAt: "2026-03-28",
       notes:
         "Offer at $175k base + equity. Need to respond by April 5. Compare with other pipelines before deciding.",
     },
     {
-      id: 6,
+      id: "6",
       company: "Cloudflare",
       role: "Systems Engineer",
       status: ApplicationStatus.FollowedUp,
@@ -95,12 +95,12 @@ export default function Home() {
       location: "Austin, TX",
       salaryRange: "$145-175k",
       createdAt: "2026-03-12",
-      updated_at: "2026-03-25",
+      updatedAt: "2026-03-25",
       notes:
         "No response after two weeks. Sent follow-up email to recruiter on LinkedIn.",
     },
     {
-      id: 7,
+      id: "7",
       company: "Netflix",
       role: "Senior Software Engineer",
       status: ApplicationStatus.RejectedAfterInterview,
@@ -109,12 +109,12 @@ export default function Home() {
       location: "Los Gatos, CA",
       salaryRange: "$200-250k",
       createdAt: "2026-02-20",
-      updated_at: "2026-03-30",
+      updatedAt: "2026-03-30",
       notes:
         "Made it to final round but didn't pass the system design interview. Feedback: needed stronger distributed systems knowledge.",
     },
     {
-      id: 8,
+      id: "8",
       company: "Twilio",
       role: "Backend Developer",
       status: ApplicationStatus.Expired,
@@ -123,12 +123,12 @@ export default function Home() {
       location: "Remote",
       salaryRange: "$130-155k",
       createdAt: "2026-02-10",
-      updated_at: "2026-03-15",
+      updatedAt: "2026-03-15",
       notes:
         "Posting was taken down before hearing back. Role may have been filled internally.",
     },
     {
-      id: 9,
+      id: "9",
       company: "Linear",
       role: "Software Engineer",
       status: ApplicationStatus.Saved,
@@ -137,7 +137,7 @@ export default function Home() {
       location: "Remote",
       salaryRange: "$140-170k",
       createdAt: "2026-03-30",
-      updated_at: "2026-03-30",
+      updatedAt: "2026-03-30",
       notes:
         "Great product, small team. Wait until take-home for Vercel is done before applying.",
     },

@@ -28,7 +28,7 @@ export interface Application {
 export interface StatusEvent {
   id: string;
   applicationId: string;
-  fromStatus: ApplicationStatus;
+  fromStatus: ApplicationStatus | null;
   toStatus: ApplicationStatus;
   createdAt: string;
 }

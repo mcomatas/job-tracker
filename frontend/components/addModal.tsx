@@ -18,7 +18,7 @@ export default function AddModal() {
         className="flex items-center border-2 px-4 py-2 rounded-xl border-gray-400/30 font-semibold hover:bg-stone-900/50 cursor-pointer active:bg-stone-900"
         onClick={openModal}
       >
-        <IoAdd className="text-xl" />
+        <IoAdd size={20} />
         <h1 className="px-2">Add Application</h1>
       </div>
 

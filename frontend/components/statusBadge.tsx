@@ -10,6 +10,7 @@ function capitalize(words: string[]): string[] {
 export default function StatusBadge({ status }: { status: ApplicationStatus }) {
   const statusColors: Record<ApplicationStatus, string> = {
     [ApplicationStatus.Applied]: "bg-yellow-500/20 text-yellow-300",
+    [ApplicationStatus.Screening]: "bg-amber-500/20 text-amber-300",
     [ApplicationStatus.Interview]: "bg-blue-500/20 text-blue-300",
     [ApplicationStatus.Offer]: "bg-green-500/20 text-green-300",
     [ApplicationStatus.Rejected]: "bg-red-500/20 text-red-300",
