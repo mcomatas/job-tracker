@@ -141,6 +141,20 @@ export default function Home() {
       notes:
         "Great product, small team. Wait until take-home for Vercel is done before applying.",
     },
+    {
+      id: "10",
+      company: "Figma",
+      role: "Software Engineer",
+      status: ApplicationStatus.Screening,
+      appliedDate: "2026-03-18",
+      jobUrl: "https://figma.com/careers/10",
+      location: "San Francisco, CA",
+      salaryRange: "$155-185k",
+      createdAt: "2026-03-18",
+      updatedAt: "2026-03-28",
+      notes:
+        "Recruiter reached out after applying. Phone screen scheduled for next week — review their plugin API beforehand.",
+    },
   ];
 
   return (
