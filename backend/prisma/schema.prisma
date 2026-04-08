@@ -30,8 +30,8 @@ model Applications {
   company      String
   role         String
   status       ApplicationStatus
-  location     String
-  appliedDate  DateTime
+  location     String?
+  appliedDate  DateTime?
   jobUrl       String?
   salaryRange  String?
   notes        String?
