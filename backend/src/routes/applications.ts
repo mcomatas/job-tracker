@@ -35,7 +35,7 @@ export const updateApplicationSchema = createApplicationSchema.partial();
 router.get("/", async (req, res) => {
   try {
     const applications = await prisma.applications.findMany();
-    res.json(applications);
+    res.status(200).json({ data: applications });
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
@@ -54,7 +54,7 @@ router.get("/:id", async (req, res) => {
       return;
     }
 
-    res.json(application);
+    res.status(200).json({ data: application });
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
@@ -94,7 +94,7 @@ router.patch("/:id", async (req, res) => {
       where: { id: req.params.id },
       data: result.data,
     });
-    res.json(application);
+    res.status(200).json({ data: application });
   } catch (error) {
     if (
       error instanceof Prisma.PrismaClientKnownRequestError &&
@@ -113,7 +113,7 @@ router.delete("/:id", async (req, res) => {
     const application = await prisma.applications.delete({
       where: { id: req.params.id },
     });
-    res.json({ data: application });
+    res.status(200).json({ data: application });
   } catch (error) {
     if (
       error instanceof Prisma.PrismaClientKnownRequestError &&
