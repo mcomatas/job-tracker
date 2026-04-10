@@ -19,6 +19,7 @@ router.get("/:id", async (req, res) => {
   try {
     const application = await prisma.applications.findUnique({
       where: { id: req.params.id },
+      include: { statusEvents: { orderBy: { createdAt: "asc" } } },
     });
 
     if (!application) {
