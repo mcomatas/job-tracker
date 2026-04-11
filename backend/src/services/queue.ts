@@ -20,15 +20,15 @@ export async function connectQueue() {
 
 export async function publishStatusChange(
   applicationId: string,
-  fromStatus: string,
-  toStatus: string,
+  fromStatus: ApplicationStatus | null,
+  toStatus: ApplicationStatus,
 ) {
   if (!channel) {
     throw new Error("Queue not connected - call connectQueue() first");
-
-    const payload = { applicationId, fromStatus, toStatus };
-    channel.sendToQueue(QUEUE_NAME, Buffer.from(JSON.stringify(payload)), {
-      persistent: true,
-    });
   }
+
+  const payload = { applicationId, fromStatus, toStatus };
+  channel.sendToQueue(QUEUE_NAME, Buffer.from(JSON.stringify(payload)), {
+    persistent: true,
+  });
 }

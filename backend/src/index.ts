@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express from "express";
+import { connectQueue } from "./services/queue";
 import applicationRoutes from "./routes/applications";
 
 const app = express();
@@ -13,6 +14,11 @@ app.get("/health", (req, res) => {
 
 app.use("/applications", applicationRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+connectQueue()
+  .then(() => {
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  })
+  .catch((err) => {
+    console.error("Failed to connect to RabbitMQ: ", err);
+    process.exit(1);
+  });
