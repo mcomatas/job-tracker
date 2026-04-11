@@ -2,6 +2,7 @@ import prisma from "../lib/prisma";
 import { Router } from "express";
 import { Prisma } from "../generated/prisma/client";
 import { z } from "zod";
+import { publishStatusChange } from "../services/queue";
 
 const router = Router();
 
@@ -90,11 +91,31 @@ router.patch("/:id", async (req, res) => {
       return;
     }
 
-    const application = await prisma.applications.update({
+    const application = await prisma.applications.findUnique({
+      where: { id: req.params.id },
+    });
+    if (!application) {
+      res.status(404).json({ error: "Application not found" });
+      return;
+    }
+    const fromStatus = application.status;
+
+    const updatedApplication = await prisma.applications.update({
       where: { id: req.params.id },
       data: result.data,
     });
-    res.status(200).json({ data: application });
+
+    // Publish status change only if status is in the update AND
+    // the status is not the same the old status
+    if (result.data.status && result.data.status !== fromStatus) {
+      await publishStatusChange(
+        updatedApplication.id,
+        fromStatus,
+        updatedApplication.status,
+      );
+    }
+
+    res.status(200).json({ data: updatedApplication });
   } catch (error) {
     if (
       error instanceof Prisma.PrismaClientKnownRequestError &&
