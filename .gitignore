@@ -10,3 +10,4 @@ backend/src/generated/prisma
 backend/prisma/migrations
 
 worker/node_modules
+worker/.env
