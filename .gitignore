@@ -8,3 +8,5 @@ backend/node_modules
 backend/.env
 backend/src/generated/prisma
 backend/prisma/migrations
+
+worker/node_modules
