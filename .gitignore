@@ -12,3 +12,4 @@ backend/prisma/migrations
 
 worker/node_modules
 worker/.env
+worker/src/generated/prisma
