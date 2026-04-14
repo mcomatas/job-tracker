@@ -49,7 +49,9 @@ export default function ApplicationTable({
                 className="hover:bg-stone-900/50 cursor-pointer"
                 onClick={() =>
                   setSelectedApplication(
-                    selectedApplication !== application ? application : null,
+                    selectedApplication?.id !== application.id
+                      ? application
+                      : null,
                   )
                 }
               >

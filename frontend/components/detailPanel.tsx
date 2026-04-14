@@ -163,9 +163,9 @@ export default function DetailPanel({
         <p className="text-stone-400 text-sm font-semibold py-2">
           STATUS HISTORY
         </p>
-        {mockEvents.map((event) => (
+        {/*mockEvents.map((event) => (
           <StatusUpdate key={event.id} event={event} />
-        ))}
+        ))*/}
       </div>
 
       <div className="px-4 py-2 text-left">
