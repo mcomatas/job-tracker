@@ -20,6 +20,20 @@ function GridPane({
   );
 }
 
+function formatDate(dateString: string): string {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+function formatStatus(status: string): string {
+  return status
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/^./, (c) => c.toUpperCase());
+}
+
 function StatusUpdate({ event }: { event: StatusEvent }) {
   const statusColors: Record<ApplicationStatus, string> = {
     [ApplicationStatus.Applied]: "bg-yellow-500",
@@ -43,8 +57,8 @@ function StatusUpdate({ event }: { event: StatusEvent }) {
         <div className="w-0.25 flex-1 bg-stone-600" />
       </div>
       <div className="text-sm">
-        <p>Moved to {event.toStatus.split("_").join(" ")}</p>
-        <p className="text-sm text-stone-400">{event.createdAt}</p>
+        <p>Moved to {formatStatus(event.toStatus)}</p>
+        <p className="text-sm text-stone-400">{formatDate(event.createdAt)}</p>
       </div>
     </div>
   );
