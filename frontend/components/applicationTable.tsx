@@ -6,6 +6,15 @@ import DetailPanel from "@/components/detailPanel";
 import { useState, useEffect } from "react";
 import { getApplication } from "../lib/api";
 
+function formatDate(dateString: string): string {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
 function ApplicationTableHeader({ header }: { header: string }) {
   return (
     <th className="border-b border-gray-500/40 text-stone-400 font-semibold text-left">
@@ -81,7 +90,7 @@ export default function ApplicationTable({
                 </ApplicationTableData>
                 <ApplicationTableData>
                   {/*I will need to change the format of this once I interact with backend */}
-                  <p>{application.appliedDate}</p>
+                  <p>{formatDate(application.appliedDate)}</p>
                 </ApplicationTableData>
                 <ApplicationTableData>
                   <p>{application.location}</p>
