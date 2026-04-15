@@ -18,8 +18,12 @@ function Stat({ num, title }: { num: number; title: string }) {
 export default function Home() {
   const [applications, setApplications] = useState<Applications[]>([]);
 
-  useEffect(() => {
+  const refreshApplications = () => {
     getApplications().then(setApplications);
+  };
+
+  useEffect(() => {
+    refreshApplications();
   }, []);
 
   return (
@@ -27,7 +31,7 @@ export default function Home() {
       <div className="text-center space-y-2 text-stone-100 max-w-6xl w-full mx-auto">
         <div className="flex justify-between items-center">
           <h1 className="text-4xl font-bold text-left pb-2">Job Tracker</h1>
-          <AddModal />
+          <AddModal onApplicationAdded={refreshApplications} />
         </div>
         <div className="text-left justify-between p-3 flex flex-row">
           <Stat num={8} title="Total" />

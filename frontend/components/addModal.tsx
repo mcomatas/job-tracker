@@ -3,7 +3,11 @@ import { useState } from "react";
 import { createApplication } from "../lib/api";
 import { ApplicationStatus } from "@/types/application";
 
-export default function AddModal() {
+export default function AddModal({
+  onApplicationAdded,
+}: {
+  onApplicationAdded: () => void;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [company, setCompany] = useState("");
   const [role, setRole] = useState("");
@@ -55,6 +59,7 @@ export default function AddModal() {
                   salaryRange: salaryRange || undefined,
                   notes: notes || undefined,
                 });
+                onApplicationAdded();
                 closeModal();
               }}
             >
