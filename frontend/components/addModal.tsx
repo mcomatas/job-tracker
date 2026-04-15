@@ -1,8 +1,17 @@
 import { IoAdd } from "react-icons/io5";
 import { useState } from "react";
+import { createApplication } from "../lib/api";
+import { ApplicationStatus } from "@/types/application";
 
 export default function AddModal() {
   const [isOpen, setIsOpen] = useState(false);
+  const [company, setCompany] = useState("");
+  const [role, setRole] = useState("");
+  const [location, setLocation] = useState("");
+  const [appliedDate, setAppliedDate] = useState("");
+  const [jobUrl, setJobUrl] = useState("");
+  const [salaryRange, setSalaryRange] = useState("");
+  const [notes, setNotes] = useState("");
 
   const openModal = () => {
     setIsOpen(true);
@@ -32,41 +41,71 @@ export default function AddModal() {
             <h2 className="text-xl font-semibold text-stone-100 pb-4">
               Add Application
             </h2>
-            <form className="flex flex-col space-y-4">
+            <form
+              className="flex flex-col space-y-4"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                await createApplication({
+                  company,
+                  role,
+                  status: ApplicationStatus.Applied,
+                  location: location || undefined,
+                  appliedDate: new Date(appliedDate).toISOString(),
+                  jobUrl: jobUrl || undefined,
+                  salaryRange: salaryRange || undefined,
+                  notes: notes || undefined,
+                });
+                closeModal();
+              }}
+            >
               <div className="grid grid-cols-2 gap-4">
                 <input
                   placeholder="Company"
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
                   className="bg-stone-700 text-stone-100 placeholder-stone-400 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-stone-500"
                 />
                 <input
                   placeholder="Role"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
                   className="bg-stone-700 text-stone-100 placeholder-stone-400 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-stone-500"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <input
                   placeholder="Location"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
                   className="bg-stone-700 text-stone-100 placeholder-stone-400 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-stone-500"
                 />
                 <input
                   placeholder="Applied Date"
                   type="date"
+                  value={appliedDate}
+                  onChange={(e) => setAppliedDate(e.target.value)}
                   className="bg-stone-700 text-stone-100 placeholder-stone-400 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-stone-500"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <input
                   placeholder="Job URL"
+                  value={jobUrl}
+                  onChange={(e) => setJobUrl(e.target.value)}
                   className="bg-stone-700 text-stone-100 placeholder-stone-400 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-stone-500"
                 />
                 <input
                   placeholder="Salary Range"
+                  value={salaryRange}
+                  onChange={(e) => setSalaryRange(e.target.value)}
                   className="bg-stone-700 text-stone-100 placeholder-stone-400 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-stone-500"
                 />
               </div>
               <textarea
                 placeholder="Notes"
                 rows={3}
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
                 className="bg-stone-700 text-stone-100 placeholder-stone-400 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-stone-500 resize-none"
               />
               <div className="flex justify-end gap-3 pt-2">
