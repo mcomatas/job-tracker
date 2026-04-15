@@ -58,83 +58,12 @@ function Note({ note }: { note: string | null }) {
   );
 }
 
-const mockEvents: StatusEvent[] = [
-  {
-    id: "1",
-    applicationId: "1",
-    fromStatus: ApplicationStatus.Interview,
-    toStatus: ApplicationStatus.Offer,
-    createdAt: "2026-03-30",
-  },
-  {
-    id: "2",
-    applicationId: "1",
-    fromStatus: ApplicationStatus.Interview,
-    toStatus: ApplicationStatus.RejectedAfterInterview,
-    createdAt: "2026-03-28",
-  },
-  {
-    id: "3",
-    applicationId: "1",
-    fromStatus: ApplicationStatus.TakeHome,
-    toStatus: ApplicationStatus.Interview,
-    createdAt: "2026-03-26",
-  },
-  {
-    id: "4",
-    applicationId: "1",
-    fromStatus: ApplicationStatus.Applied,
-    toStatus: ApplicationStatus.TakeHome,
-    createdAt: "2026-03-24",
-  },
-  {
-    id: "5",
-    applicationId: "1",
-    fromStatus: ApplicationStatus.Applied,
-    toStatus: ApplicationStatus.Screening,
-    createdAt: "2026-03-23",
-  },
-  {
-    id: "6",
-    applicationId: "1",
-    fromStatus: ApplicationStatus.Applied,
-    toStatus: ApplicationStatus.FollowedUp,
-    createdAt: "2026-03-22",
-  },
-  {
-    id: "7",
-    applicationId: "1",
-    fromStatus: ApplicationStatus.Saved,
-    toStatus: ApplicationStatus.Applied,
-    createdAt: "2026-03-20",
-  },
-  {
-    id: "8",
-    applicationId: "1",
-    fromStatus: ApplicationStatus.Applied,
-    toStatus: ApplicationStatus.Rejected,
-    createdAt: "2026-03-18",
-  },
-  {
-    id: "9",
-    applicationId: "1",
-    fromStatus: ApplicationStatus.Applied,
-    toStatus: ApplicationStatus.Expired,
-    createdAt: "2026-03-16",
-  },
-  {
-    id: "10",
-    applicationId: "1",
-    fromStatus: null,
-    toStatus: ApplicationStatus.Saved,
-    createdAt: "2026-03-14",
-  },
-];
-
 export default function DetailPanel({
   application,
+  events,
 }: {
   application: Application;
+  events: StatusEvents[];
 }) {
   return (
     <div className="rounded-lg border border-gray-500/40 overflow-hidden tracking-tight bg-stone-700 max-w-2xl">
@@ -163,9 +92,9 @@ export default function DetailPanel({
         <p className="text-stone-400 text-sm font-semibold py-2">
           STATUS HISTORY
         </p>
-        {/*mockEvents.map((event) => (
+        {events?.map((event) => (
           <StatusUpdate key={event.id} event={event} />
-        ))*/}
+        ))}
       </div>
 
       <div className="px-4 py-2 text-left">

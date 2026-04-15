@@ -1,9 +1,10 @@
 "use client";
 
-import { Application } from "@/types/application";
+import { Application, StatusEvents } from "@/types/application";
 import StatusBadge from "@/components/statusBadge";
 import DetailPanel from "@/components/detailPanel";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getApplication } from "../lib/api";
 
 function ApplicationTableHeader({ header }: { header: string }) {
   return (
@@ -28,6 +29,16 @@ export default function ApplicationTable({
 }) {
   const [selectedApplication, setSelectedApplication] =
     useState<Application | null>(null);
+
+  const [events, setEvents] = useState<StatusEvents[] | null>(null);
+
+  useEffect(() => {
+    if (selectedApplication) {
+      getApplication(selectedApplication.id).then((data) => {
+        setEvents(data.statusEvents);
+      });
+    }
+  }, [selectedApplication]);
 
   return (
     <>
@@ -87,7 +98,7 @@ export default function ApplicationTable({
             onClick={() => setSelectedApplication(null)}
           />
           <div className="flex items-center fixed top-0 right-0 h-full w-[500px] bg-stone-800 shadow-lg z-40 overflow-y-auto p-4">
-            <DetailPanel application={selectedApplication} />
+            <DetailPanel application={selectedApplication} events={events} />
           </div>
         </>
       )}
