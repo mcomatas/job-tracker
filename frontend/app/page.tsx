@@ -16,7 +16,7 @@ function Stat({ num, title }: { num: number; title: string }) {
 }
 
 export default function Home() {
-  const [applications, setApplications] = useState<Applications[]>([]);
+  const [applications, setApplications] = useState<Application[]>([]);
 
   const refreshApplications = () => {
     getApplications().then(setApplications);
@@ -39,7 +39,10 @@ export default function Home() {
           <Stat num={2} title="In progress" />
           <Stat num={3} title="Rejected" />
         </div>
-        <ApplicationTable applications={applications} />
+        <ApplicationTable
+          applications={applications}
+          onApplicationEdited={refreshApplications}
+        />
       </div>
     </main>
   );

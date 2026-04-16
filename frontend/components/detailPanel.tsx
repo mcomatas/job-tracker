@@ -109,9 +109,11 @@ function Note({
 export default function DetailPanel({
   application,
   events,
+  onApplicationEdited,
 }: {
   application: Application;
   events: StatusEvents[];
+  onApplicationEdited: () => void;
 }) {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -135,8 +137,8 @@ export default function DetailPanel({
         </button>
         {isEditing && (
           <button
-            onClick={() => {
-              updateApplication(application.id, {
+            onClick={async () => {
+              await updateApplication(application.id, {
                 company,
                 role,
                 status,
@@ -148,6 +150,8 @@ export default function DetailPanel({
                 salaryRange: salaryRange || undefined,
                 notes: notes || undefined,
               });
+              onApplicationEdited();
+              setIsEditing(false);
             }}
             className="flex items-center border-2 px-4 py-2 rounded-xl border-green-400/30 font-semibold hover:bg-stone-900/50 cursor-pointer active:bg-stone-900 mb-4 ml-3"
           >

@@ -33,8 +33,10 @@ function ApplicationTableData({ children }: { children: React.ReactNode }) {
 
 export default function ApplicationTable({
   applications,
+  onApplicationEdited,
 }: {
   applications: Application[];
+  onApplicationEdited: () => void;
 }) {
   const [selectedApplication, setSelectedApplication] =
     useState<Application | null>(null);
@@ -107,7 +109,11 @@ export default function ApplicationTable({
             onClick={() => setSelectedApplication(null)}
           />
           <div className="flex items-center fixed top-0 right-0 h-full w-[500px] bg-stone-800 shadow-lg z-40 overflow-y-auto p-4">
-            <DetailPanel application={selectedApplication} events={events} />
+            <DetailPanel
+              application={selectedApplication}
+              events={events}
+              onApplicationEdited={onApplicationEdited}
+            />
           </div>
         </>
       )}
