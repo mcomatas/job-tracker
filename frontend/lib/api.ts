@@ -13,6 +13,8 @@ interface CreateApplicationInput {
   notes?: string;
 }
 
+type UpdateApplicationInput = Partial<CreateApplicationInput>;
+
 // GET all applications (for full table)
 export async function getApplications() {
   const res = await fetch(`${API_URL}/applications`);
@@ -27,6 +29,7 @@ export async function getApplication(id: string) {
   return json.data;
 }
 
+// CREATE new application
 export async function createApplication(application: CreateApplicationInput) {
   const res = await fetch(`${API_URL}/applications/`, {
     method: "POST",
@@ -36,5 +39,22 @@ export async function createApplication(application: CreateApplicationInput) {
     body: JSON.stringify(application),
   });
   const json = await res.json();
+  return json.data;
+}
+
+// UPDATE existing application
+export async function updateApplication(
+  id: string,
+  application: UpdateApplicationInput,
+) {
+  const res = await fetch(`${API_URL}/applications/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(application),
+  });
+  const json = await res.json();
+  console.log(json.data);
   return json.data;
 }
