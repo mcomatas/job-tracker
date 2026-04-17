@@ -162,11 +162,44 @@ export default function DetailPanel({
       <div className="rounded-lg border border-gray-500/40 overflow-hidden tracking-tight bg-stone-700 max-w-2xl">
         <div className="flex flex-row items-center justify-between text-md w-full px-4 py-1.5">
           <div className="flex flex-col font-semibold text-left">
-            <p className="text-xl">{application.company}</p>
-            <p className="text-md text-stone-400">{application.role}</p>
+            {isEditing ? (
+              <input
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                className="text-xl font-semibold bg-transparent text-stone-100 outline-none border-b border-stone-400/50"
+              />
+            ) : (
+              <p className="text-xl">{application.company}</p>
+            )}
+            {isEditing ? (
+              <input
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                className="text-md font-semibold bg-transparent text-stone-400 outline-none border-b border-stone-400/50"
+              />
+            ) : (
+              <p className="text-md text-stone-400">{application.role}</p>
+            )}
           </div>
           <div className="font-semibold">
-            <StatusBadge status={application.status} />
+            {isEditing ? (
+              <div className="flex flex-col items-end gap-1">
+                <StatusBadge status={status} />
+                <select
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value as ApplicationStatus)}
+                  className="bg-stone-700 text-stone-100 rounded-lg px-2 py-1 outline-none text-sm"
+                >
+                  {Object.values(ApplicationStatus).map((s) => (
+                    <option key={s} value={s}>
+                      {formatStatus(s)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ) : (
+              <StatusBadge status={application.status} />
+            )}
           </div>
         </div>
 
