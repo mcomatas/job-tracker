@@ -133,7 +133,17 @@ export default function DetailPanel({
     <div>
       <div className="flex flex-row">
         <button
-          onClick={() => setIsEditing(!isEditing)}
+          onClick={() => {
+            setIsEditing(!isEditing);
+            setCompany(application.company);
+            setRole(application.role);
+            setStatus(application.status);
+            setLocation(application.location);
+            setAppliedDate(application.appliedDate);
+            setJobUrl(application.jobUrl);
+            setSalaryRange(application.salaryRange);
+            setNotes(application.notes);
+          }}
           className="flex items-center border-2 px-4 py-2 rounded-xl border-gray-400/30 font-semibold hover:bg-stone-900/50 cursor-pointer active:bg-stone-900 mb-4 ml-auto"
         >
           {isEditing ? "Cancel" : "Edit"}
