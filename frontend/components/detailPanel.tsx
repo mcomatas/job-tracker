@@ -13,18 +13,21 @@ function GridPane({
   isEditing,
   value,
   onChange,
+  type = "text",
 }: {
   header: string;
   children: React.ReactNode;
   isEditing?: boolean;
   value?: string;
   onChange?: (value: string) => void;
+  type?: string;
 }) {
   return (
     <div className="flex flex-col bg-gray-900/30 rounded-md px-4 py-2 text-left font-semibold">
       <p className="text-sm text-stone-400">{header}</p>
       {isEditing ? (
         <input
+          type={type}
           value={value ?? ""}
           onChange={(e) => onChange?.(e.target.value)}
           className="bg-transparent text-stone-100 outline-none"
@@ -187,7 +190,9 @@ export default function DetailPanel({
                 <StatusBadge status={status} />
                 <select
                   value={status}
-                  onChange={(e) => setStatus(e.target.value as ApplicationStatus)}
+                  onChange={(e) =>
+                    setStatus(e.target.value as ApplicationStatus)
+                  }
                   className="bg-stone-700 text-stone-100 rounded-lg px-2 py-1 outline-none text-sm"
                 >
                   {Object.values(ApplicationStatus).map((s) => (
@@ -213,6 +218,7 @@ export default function DetailPanel({
             isEditing={isEditing}
             value={appliedDate ?? ""}
             onChange={setAppliedDate}
+            type="date"
           >
             {application.appliedDate
               ? formatDate(application.appliedDate)
