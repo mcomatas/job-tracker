@@ -5,7 +5,7 @@ import {
 } from "@/types/application";
 import StatusBadge from "@/components/statusBadge";
 import { useState } from "react";
-import { updateApplication } from "../lib/api";
+import { updateApplication, deleteApplication } from "../lib/api";
 
 function GridPane({
   header,
@@ -285,6 +285,18 @@ export default function DetailPanel({
           <Note note={notes} isEditing={isEditing} onChange={setNotes} />
         </div>
       </div>
+      {isEditing && (
+        <button
+          onClick={async () => {
+            await deleteApplication(application.id);
+            onApplicationEdited();
+            setIsEditing(false);
+          }}
+          className="flex items-center border-2 px-4 py-2 rounded-xl border-red-400/30 font-semibold hover:bg-red-900/50 cursor-pointer active:bg-stone-900 mt-4 ml-auto"
+        >
+          Delete
+        </button>
+      )}
     </div>
   );
 }

@@ -55,6 +55,14 @@ export async function updateApplication(
     body: JSON.stringify(application),
   });
   const json = await res.json();
-  console.log(json.data);
+  return json.data;
+}
+
+// DELETE application
+export async function deleteApplication(id: string) {
+  const res = await fetch(`${API_URL}/applications/${id}`, {
+    method: "DELETE",
+  });
+  const json = await res.json();
   return json.data;
 }
