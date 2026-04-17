@@ -248,7 +248,18 @@ export default function DetailPanel({
             value={jobUrl ?? ""}
             onChange={setJobUrl}
           >
-            {application.jobUrl}
+            {application.jobUrl ? (
+              <a
+                href={application.jobUrl}
+                target="_blank"
+                rel="noopener norefferer"
+                className="text-blue-400 hover:underline"
+              >
+                {application.jobUrl}
+              </a>
+            ) : (
+              "_"
+            )}
           </GridPane>
           <GridPane
             header="Location"
