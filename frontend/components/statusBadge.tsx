@@ -1,10 +1,9 @@
 import { ApplicationStatus } from "@/types/application";
 
-function capitalize(words: string[]): string[] {
-  for (let i = 0; i < words.length; i++) {
-    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
-  }
-  return words;
+function formatStatus(status: string): string {
+  return status
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/^./, (c) => c.toUpperCase());
 }
 
 export default function StatusBadge({ status }: { status: ApplicationStatus }) {
@@ -25,7 +24,7 @@ export default function StatusBadge({ status }: { status: ApplicationStatus }) {
     <div
       className={`rounded-4xl px-2.5 py-1 w-fit text-sm ${statusColors[status]}`}
     >
-      {capitalize(status.split("_")).join(" ")}
+      {formatStatus(status)}
     </div>
   );
 }
