@@ -51,6 +51,13 @@ export default function ApplicationTable({
     }
   }, [selectedApplication]);
 
+  useEffect(() => {
+    if (selectedApplication) {
+      const updated = applications.find((a) => a.id === selectedApplication.id);
+      setSelectedApplication(updated ?? null);
+    }
+  }, [applications]);
+
   return (
     <>
       <div className="rounded-lg border border-gray-500/40 overflow-hidden tracking-tight relative z-30">
