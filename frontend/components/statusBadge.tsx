@@ -22,7 +22,7 @@ export default function StatusBadge({ status }: { status: ApplicationStatus }) {
 
   return (
     <div
-      className={`rounded-4xl px-2.5 py-1 w-fit text-sm ${statusColors[status]}`}
+      className={`rounded-4xl px-2.5 py-1 w-fit text-sm whitespace-nowrap ${statusColors[status]}`}
     >
       {formatStatus(status)}
     </div>

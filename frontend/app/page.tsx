@@ -37,7 +37,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-stone-900/95 flex items-start pt-30">
+    <main className="min-h-screen bg-stone-900/95 flex items-start pt-30 pb-30">
       <div className="text-center space-y-2 text-stone-100 max-w-6xl w-full mx-auto">
         <div className="flex justify-between items-center">
           <h1 className="text-4xl font-bold text-left pb-2">Job Tracker</h1>
