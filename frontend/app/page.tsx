@@ -17,6 +17,16 @@ function Stat({ num, title }: { num: number; title: string }) {
 
 export default function Home() {
   const [applications, setApplications] = useState<Application[]>([]);
+  const rejectedStatuses = [
+    ApplicationStatus.Rejected,
+    ApplicationStatus.RejectedAfterInterview,
+  ];
+  const inProgressStatuses = [
+    ApplicationStatus.Screening,
+    ApplicationStatus.Interview,
+    ApplicationStatus.TakeHome,
+    ApplicationStatus.FollowedUp,
+  ];
 
   const refreshApplications = () => {
     getApplications().then(setApplications);
@@ -34,10 +44,28 @@ export default function Home() {
           <AddModal onApplicationAdded={refreshApplications} />
         </div>
         <div className="text-left justify-between p-3 flex flex-row">
-          <Stat num={8} title="Total" />
-          <Stat num={3} title="Applied" />
-          <Stat num={2} title="In progress" />
-          <Stat num={3} title="Rejected" />
+          <Stat num={applications.length} title="Total" />
+          <Stat
+            num={
+              applications.filter((a) => a.status === ApplicationStatus.Applied)
+                .length
+            }
+            title="Applied"
+          />
+          <Stat
+            num={
+              applications.filter((a) => inProgressStatuses.includes(a.status))
+                .length
+            }
+            title="In progress"
+          />
+          <Stat
+            num={
+              applications.filter((a) => rejectedStatuses.includes(a.status))
+                .length
+            }
+            title="Rejected"
+          />
         </div>
         <ApplicationTable
           applications={applications}
