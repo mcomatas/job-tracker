@@ -35,7 +35,9 @@ export const updateApplicationSchema = createApplicationSchema.partial();
 // GET /applications
 router.get("/", async (req, res) => {
   try {
-    const applications = await prisma.applications.findMany();
+    const applications = await prisma.applications.findMany({
+      orderBy: { appliedDate: { sort: "desc", nulls: "last" } },
+    });
     res.status(200).json({ data: applications });
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
