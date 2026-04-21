@@ -1,6 +1,6 @@
 "use client";
 
-import { Application, StatusEvents } from "@/types/application";
+import { Application, StatusEvent } from "@/types/application";
 import StatusBadge from "@/components/statusBadge";
 import DetailPanel from "@/components/detailPanel";
 import { useState, useEffect } from "react";
