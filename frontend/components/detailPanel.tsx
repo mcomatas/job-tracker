@@ -115,7 +115,7 @@ export default function DetailPanel({
   onApplicationEdited,
 }: {
   application: Application;
-  events: StatusEvents[];
+  events: StatusEvent[];
   onApplicationEdited: () => void;
 }) {
   const [isEditing, setIsEditing] = useState(false);

@@ -9,12 +9,14 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.6.0",
     "@prisma/client": "^7.6.0",
     "amqplib": "^1.0.3",
+    "dotenv": "^17.4.1",
     "prisma": "^7.6.0"
   },
   "devDependencies": {
