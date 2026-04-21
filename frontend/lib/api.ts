@@ -6,7 +6,7 @@ interface CreateApplicationInput {
   company: string;
   role: string;
   status: ApplicationStatus;
-  location: string;
+  location?: string;
   appliedDate: string;
   jobUrl?: string;
   salaryRange?: string;

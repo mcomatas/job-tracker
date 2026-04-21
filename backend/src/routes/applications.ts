@@ -23,7 +23,7 @@ export const createApplicationSchema = z.object({
   company: z.string(),
   role: z.string(),
   status: ApplicationStatus,
-  location: z.string(),
+  location: z.string().optional(),
   appliedDate: z.string().datetime(),
   jobUrl: z.string().optional(),
   salaryRange: z.string().optional(),
