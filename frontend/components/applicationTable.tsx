@@ -41,7 +41,7 @@ export default function ApplicationTable({
   const [selectedApplication, setSelectedApplication] =
     useState<Application | null>(null);
 
-  const [events, setEvents] = useState<StatusEvents[] | null>(null);
+  const [events, setEvents] = useState<StatusEvent[] | null>(null);
 
   useEffect(() => {
     if (selectedApplication) {
