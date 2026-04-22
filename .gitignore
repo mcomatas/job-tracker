@@ -12,3 +12,5 @@ backend/src/generated/prisma
 worker/node_modules
 worker/.env
 worker/src/generated/prisma
+
+seed.mjs
