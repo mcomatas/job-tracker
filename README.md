@@ -49,6 +49,18 @@ Running the worker as a separate service means status-history writes can fail or
 - Per-application notes
 - Table ordered by applied date (most recent first)
 
+## Known limitations & future improvements
+
+This is an MVP shipped as a portfolio piece. Deliberately deferred:
+
+- **Authentication.** There are no user accounts — anyone who visits the live URL can create, edit, or delete applications. Adding auth (e.g. NextAuth or Clerk) would scope data per user and is the prerequisite for any kind of public rollout.
+- **Sortable & filterable table.** The table currently sorts server-side by applied date. Column headers aren't interactive, and there's no filtering by status, company, location, or salary — all of which would be straightforward to layer on top of the existing table.
+- **Richer dashboard stats.** The current stat row is a simple count-by-status. A real dashboard would include response rates, time-in-stage, application velocity over time, and clickable drill-downs.
+- **Mobile responsive layout.** Designed desktop-first; the detail panel and table don't collapse gracefully on small screens.
+- **Pagination / virtualization.** The `GET /applications` endpoint returns every row. Once a user hits a few hundred applications, both the payload size and the DOM render will become a bottleneck.
+- **Empty-state & error handling.** Fetch failures currently fail silently in the UI, and the add-application form will throw if a user submits without an applied date.
+- **Automated tests.** No test runner is configured. The pipeline architecture (API publishes, worker consumes) is a natural fit for integration tests against a test Postgres and RabbitMQ instance.
+
 ## Project structure
 
 ```
