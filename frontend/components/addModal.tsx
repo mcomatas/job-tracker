@@ -17,12 +17,23 @@ export default function AddModal({
   const [salaryRange, setSalaryRange] = useState("");
   const [notes, setNotes] = useState("");
 
+  const resetForm = () => {
+    setCompany("");
+    setRole("");
+    setLocation("");
+    setAppliedDate("");
+    setJobUrl("");
+    setSalaryRange("");
+    setNotes("");
+  };
+
   const openModal = () => {
     setIsOpen(true);
   };
 
   const closeModal = () => {
     setIsOpen(false);
+    resetForm();
   };
 
   return (
