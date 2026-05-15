@@ -125,3 +125,8 @@ Requires `NEXT_PUBLIC_API_URL=http://localhost:3001` in `frontend/.env.local`.
 - **Queue:** CloudAMQP, `CLOUDAMQP_URL` set on both backend and worker
 
 The backend's `start` script runs `prisma migrate deploy` before booting, so schema changes are applied automatically on every deploy.
+
+## Motivation
+## Quick Start
+## Usage
+## Contributing
